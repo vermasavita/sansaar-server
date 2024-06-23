@@ -23,7 +23,3 @@ app.listen(PORT, () => {
 });
 
 
-//questions
-// 1. what is bcrypt
-// 2. what is hashing password
-// 3. what is the difference b/w app.use(bodyParser.json()); and app.use(express.json());
