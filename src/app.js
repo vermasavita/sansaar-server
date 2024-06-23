@@ -1,25 +1,15 @@
-require('dotenv').config();
+import express from "express";
+import { config } from "dotenv";
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
-
-const app = express();
-// const path = require('path');
-app.use(bodyParser.json());
-
-// app.set("view engine", "ejs");
-// app.set('views', path.join(__dirname, 'views'));
-
-connectDB();
-
-app.use('/api/auth', authRoutes);
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+config({
+  path: "src/config/config.env",
 });
 
+const app = express();
 
+// importing routes
+import courseRoutes from "./routes/courseRoutes.js";
+
+app.use("/api/v1", courseRoutes);
+
+export default app;
